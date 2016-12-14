@@ -1,0 +1,12 @@
+#ifndef DATAPORT_GLOBAL_H
+#define DATAPORT_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(DATAPORT_LIBRARY)
+#  define DATAPORTSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define DATAPORTSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // DATAPORT_GLOBAL_H

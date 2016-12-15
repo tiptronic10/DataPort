@@ -7,19 +7,18 @@
 
 class NetworkDataPort : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit NetworkDataPort(QObject *parent = 0);
-    void init();
+	explicit NetworkDataPort(QObject *parent = 0);
 signals:
 
-public slots:
-    void open();
-    void write(const QByteArray& data);
-    void close();
+	public slots:
+		void slt_init();
+		void slt_open();
+		void slt_write(const QByteArray& data);
+		void slt_close();
 private:
-    QTcpSocket* m_socket;
-    QThread* m_thread;
+	QTcpSocket* m_socket;
 };
 
 #endif // NETWORKDATAPORT_H

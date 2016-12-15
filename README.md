@@ -1,7 +1,7 @@
 #DataPort库
 [toc]
 ###简介
-```
+```C++
 int i = 0; i = 1;
 for(int i = 0; i < 100; i++)
 {

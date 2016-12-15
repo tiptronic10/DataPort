@@ -7,19 +7,21 @@
 
 class SerialDataPort : public QObject
 {
-    Q_OBJECT
-public:
-    explicit SerialDataPort(QObject *parent = 0);
-    void init();
-signals:
+	Q_OBJECT
 
-public slots:
-    void open();
-    void write(const QByteArray& data);
-    void close();
+public:
+	explicit SerialDataPort(QObject *parent = 0);
+	QSerialPort* m_serialPort;
+signals:
+	void sig_received(const QByteArray data);
+	public slots:
+		void slt_init();
+		void slt_open();
+		void slt_read();
+		void slt_write(const QByteArray& data);
+		void slt_close();
 private:
-    QSerialPort* m_serialPort;
-    QThread* m_thread;
+	QByteArray m_receivedData;
 };
 
 #endif // SERIALDATAPORT_H

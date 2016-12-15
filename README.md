@@ -1,13 +1,8 @@
 #DataPort库
 [toc]
 ###简介
-```C++
-int i = 0; i = 1;
-for(int i = 0; i < 100; i++)
-{
-printf("hello markdown!\n");
-}
-```
+DataPort是一个封装后的Qt通信类，数据的读写在子线程中进行，不会阻塞主线程，其通信类包括串口类和网口类
+里面使用的是Qt的框架，线程间通信使用信号槽机制，子线程采用movetoThread方法
 ###使用方法
 实例化DataPort对象，构造函数选择串口或网口枚举参数，之后写入数据调用write();读取数据接收sig_received();监控错误信息sig_error();
 ```C++

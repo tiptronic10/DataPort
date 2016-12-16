@@ -8,24 +8,23 @@
 #include <QTcpSocket>
 #include <QObject>
 
-class DATAPORT_EXPORT DataPort : public QObject
+enum DataPort_Type{
+	NULL_PORT,
+	NETWORK_PORT,
+	SERIAL_PORT
+};
+
+class DATAPORTSHARED_EXPORT DataPort : public QObject
 {
 	Q_OBJECT
 public:
-	enum DataPort_Type{
-		NULL_PORT,
-		NETWORK_PORT,
-		SERIAL_PORT
-	};
 
-	DataPort();
-	DataPort(DataPort_Type);
+	DataPort(DataPort_Type, const QString& str, const int& num);
 	~DataPort();
 
-	void createDataPort(DataPort_Type);
 	int getPortType();
 
-	bool open();
+	void open(const QString& strAddress, const int& number);
 	void write(const QByteArray& data);
 	void close();
 
@@ -33,9 +32,13 @@ signals:
 	void sig_received(QByteArray data);
 	void sig_error(int);
 	void sig_wirte(QByteArray data);
+	void sig_open(QString str, int number);
+	void sig_close();
 
 private:
 	QThread* m_thread;
+	QString m_strData;//Network:IPaddress	SerialPort:portName
+	int m_numData;//Network:porNumber		SerialPort:BaudRate
 	DataPort_Type m_portType;
 	NetworkDataPort* m_networkDataPort;
 	SerialDataPort* m_serialDataPort;

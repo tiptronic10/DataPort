@@ -2,18 +2,25 @@
 
 SerialDataPort::SerialDataPort(QObject *parent) : QObject(parent)
 {
-
 }
 
 void SerialDataPort::slt_init()
 {
 	m_serialPort = new QSerialPort;
-	m_serialPort->open(QIODevice::ReadWrite);
+	connect(m_serialPort, SIGNAL(readyRead()), this, SLOT(slt_read()));
+	connect(m_serialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SIGNAL(sig_error(int)));
 }
 
-void SerialDataPort::slt_open()
+void SerialDataPort::slt_open(const QString& portName, const int& baudRate)
 {
-
+	m_serialPort->setPortName(portName);
+	if(m_serialPort->open(QIODevice::ReadWrite))
+	{
+		m_serialPort->setBaudRate(baudRate);
+		m_serialPort->setDataBits(QSerialPort::Data8);
+		m_serialPort->setParity(QSerialPort::NoParity);
+		m_serialPort->setStopBits(QSerialPort::OneStop);
+	}
 }
 
 void SerialDataPort::slt_write(const QByteArray& data)

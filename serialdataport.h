@@ -14,9 +14,10 @@ public:
 	QSerialPort* m_serialPort;
 signals:
 	void sig_received(const QByteArray data);
+	void sig_error(int);
 	public slots:
 		void slt_init();
-		void slt_open();
+		void slt_open(const QString& portName, const int& baudRate);
 		void slt_read();
 		void slt_write(const QByteArray& data);
 		void slt_close();

@@ -11,7 +11,6 @@ class SerialDataPort : public QObject
 
 public:
 	explicit SerialDataPort(QObject *parent = 0);
-	QSerialPort* m_serialPort;
 signals:
 	void sig_received(const QByteArray data);
 	void sig_error(int);
@@ -22,7 +21,7 @@ signals:
 		void slt_write(const QByteArray& data);
 		void slt_close();
 private:
-	QByteArray m_receivedData;
+    QSerialPort* m_serialPort;
 };
 
 #endif // SERIALDATAPORT_H

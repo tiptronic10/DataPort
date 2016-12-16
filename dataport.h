@@ -19,7 +19,7 @@ class DATAPORTSHARED_EXPORT DataPort : public QObject
 	Q_OBJECT
 public:
 
-	DataPort(DataPort_Type, const QString& str, const int& num);
+    DataPort(DataPort_Type);
 	~DataPort();
 
 	int getPortType();
@@ -31,6 +31,8 @@ public:
 signals:
 	void sig_received(QByteArray data);
 	void sig_error(int);
+    void sig_netConnected();
+    void sig_netDisconnected();
 	void sig_wirte(QByteArray data);
 	void sig_open(QString str, int number);
 	void sig_close();

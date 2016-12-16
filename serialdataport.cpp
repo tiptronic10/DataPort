@@ -32,8 +32,9 @@ void SerialDataPort::slt_read(void)
 {
 	if (m_serialPort)
 	{
-		m_receivedData = m_serialPort->readAll();
-		emit sig_received(m_receivedData);
+//		m_receivedData = m_serialPort->readAll();
+//		emit sig_received(m_receivedData);
+        emit sig_received(m_serialPort->readAll());
 	}
 }
 

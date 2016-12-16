@@ -2,25 +2,36 @@
 
 NetworkDataPort::NetworkDataPort(QObject *parent) : QObject(parent)
 {
-
 }
 
-void NetworkDataPort::init()
+void NetworkDataPort::slt_init()
 {
-
+    m_socket = new QTcpSocket;
+    connect(m_socket, SIGNAL(readyRead()), this, SLOT(slt_read()));
+    connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SIGNAL(sig_error(int)));
+    connect(m_socket, SIGNAL(connected()), this, SIGNAL(sig_connected()));
+    connect(m_socket, SIGNAL(disconnected()), this, SIGNAL(sig_disconnected()));
 }
 
-void NetworkDataPort::open()
+void NetworkDataPort::slt_open(const QString& address, const int& port)
 {
-
+    m_socket->connectToHost(address, port);
 }
 
-void NetworkDataPort::write(const QByteArray& data)
+void NetworkDataPort::slt_write(const QByteArray& data)
 {
-    Q_UNUSED(data)
+    m_socket->write(data);
 }
 
-void NetworkDataPort::close()
+void NetworkDataPort::slt_read(void)
 {
+    if(m_socket)
+    {
+        emit sig_received(m_socket->readAll());
+    }
+}
 
+void NetworkDataPort::slt_close()
+{
+    m_socket->disconnectFromHost();
 }

@@ -15,5 +15,5 @@ obj->write();
 ```
 1. 插入图片
 ![](https://ws4.sinaimg.cn/mw600/6bade3a2gw1faq8hbjc3wj20m80godga.jpg)
-1. 插入链接
-[为知笔记](http://www.wizcn)
+1. 相关资料
+[如何实现在一个线程内新建QTcpSocket且实现定时判定socket是否连接成功](http://bbs.csdn.net/topics/390161203)

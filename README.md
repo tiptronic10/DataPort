@@ -34,6 +34,6 @@ obj->close();
 ```
 1. 插入图片
 ![](https://ws4.sinaimg.cn/mw600/6bade3a2gw1faq8hbjc3wj20m80godga.jpg)
-1. 参考来源1
+1. 参考来源  
 [如何实现在一个线程内新建QTcpSocket且实现定时判定socket是否连接成功](http://bbs.csdn.net/topics/390161203)  
 [Qt 多线程串口通信问题](https://www.zhihu.com/question/31518679)

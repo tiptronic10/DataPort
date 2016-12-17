@@ -13,8 +13,9 @@ public:
 	explicit SerialDataPort(QObject *parent = 0);
 signals:
 	void sig_received(const QByteArray data);
-	void sig_error(int);
-	public slots:
+    void sig_error(QString);
+    public slots:
+        void slt_onError(QSerialPort::SerialPortError);
 		void slt_init();
 		void slt_open(const QString& portName, const int& baudRate);
 		void slt_read();

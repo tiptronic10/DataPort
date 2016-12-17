@@ -4,11 +4,18 @@ SerialDataPort::SerialDataPort(QObject *parent) : QObject(parent)
 {
 }
 
+void SerialDataPort::slt_onError(QSerialPort::SerialPortError value)
+{
+    QString ErrInfo;
+    ErrInfo = "SerialPortError  ErrorCode:" + QString::number(value);
+    emit sig_error(ErrInfo);
+}
+
 void SerialDataPort::slt_init()
 {
 	m_serialPort = new QSerialPort;
 	connect(m_serialPort, SIGNAL(readyRead()), this, SLOT(slt_read()));
-	connect(m_serialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SIGNAL(sig_error(int)));
+    connect(m_serialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SIGNAL(slt_onError(QSerialPort::SerialPortError)));
 }
 
 void SerialDataPort::slt_open(const QString& portName, const int& baudRate)

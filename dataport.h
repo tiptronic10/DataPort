@@ -29,18 +29,19 @@ public:
 	void close();
 
 signals:
+    //对外
 	void sig_received(QByteArray data);
-	void sig_error(int);
+    void sig_error(QString);
     void sig_netConnected();
     void sig_netDisconnected();
+    //对内
 	void sig_wirte(QByteArray data);
 	void sig_open(QString str, int number);
 	void sig_close();
+    void sig_quiting();
 
 private:
 	QThread* m_thread;
-	QString m_strData;//Network:IPaddress	SerialPort:portName
-	int m_numData;//Network:porNumber		SerialPort:BaudRate
 	DataPort_Type m_portType;
 	NetworkDataPort* m_networkDataPort;
 	SerialDataPort* m_serialDataPort;

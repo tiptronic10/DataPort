@@ -13,10 +13,11 @@ public:
 	explicit NetworkDataPort(QObject *parent = 0);
 signals:
     void sig_received(const QByteArray data);
-    void sig_error(int);
+    void sig_error(QString);
     void sig_connected();
     void sig_disconnected();
 	public slots:
+        void slt_onError(QAbstractSocket::SocketError);
 		void slt_init();
         void slt_open(const QString& address, const int& port);
         void slt_read();

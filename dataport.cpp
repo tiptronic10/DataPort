@@ -16,7 +16,7 @@ DataPort::DataPort(DataPort_Type type) : m_thread(nullptr), m_networkDataPort(nu
         //接收网口信号
         connect(m_networkDataPort, SIGNAL(sig_received(QByteArray)), this, SIGNAL(sig_received(QByteArray)));//发送接收数据
         connect(m_networkDataPort, SIGNAL(sig_error(QString)), this, SIGNAL(sig_error(QString)));
-        connect(m_networkDataPort, SIGNAL(sig_disconnected()), this, SIGNAL(sig_netConnected()));
+        connect(m_networkDataPort, SIGNAL(sig_connected()), this, SIGNAL(sig_netConnected()));
         connect(m_networkDataPort, SIGNAL(sig_disconnected()), this, SIGNAL(sig_netDisconnected()));
         //响应退出信号
         connect(this, SIGNAL(sig_quiting()), m_networkDataPort, SLOT(deleteLater()));

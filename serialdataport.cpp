@@ -27,6 +27,7 @@ void SerialDataPort::slt_open(const QString& portName, const int& baudRate)
 		m_serialPort->setDataBits(QSerialPort::Data8);
 		m_serialPort->setParity(QSerialPort::NoParity);
 		m_serialPort->setStopBits(QSerialPort::OneStop);
+        emit sig_connected();
 	}
 }
 
@@ -47,5 +48,6 @@ void SerialDataPort::slt_read(void)
 
 void SerialDataPort::slt_close()
 {
-	m_serialPort->close();
+    m_serialPort->close();
+    emit sig_disconnected();
 }

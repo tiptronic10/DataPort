@@ -14,6 +14,8 @@ public:
 signals:
 	void sig_received(const QByteArray data);
     void sig_error(QString);
+    void sig_connected();
+    void sig_disconnected();
     public slots:
         void slt_onError(QSerialPort::SerialPortError);
 		void slt_init();

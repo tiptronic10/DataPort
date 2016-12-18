@@ -34,6 +34,8 @@ signals:
     void sig_error(QString);
     void sig_netConnected();
     void sig_netDisconnected();
+    void sig_comOpened();
+    void sig_comClosed();
     //对内
 	void sig_wirte(QByteArray data);
 	void sig_open(QString str, int number);

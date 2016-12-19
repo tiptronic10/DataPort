@@ -9,8 +9,8 @@ DataPort是一个封装后的Qt通信类，数据的读写在子线程中进行�
 //串口使用示例
 DataPort* obj = new DataPort(DataPort::SERIAL_PORT);//实例化DataPort对象
 //连接信号槽，负责处理接收数据以及错误信息
-connect(m_socket, SIGNAL(sig_comOpened()), this, SLOT(slt_onConnected(/*串口打开成功处理槽函数*/)));
-connect(m_socket, SIGNAL(sig_comClosed()), this, SLOT(slt_onDisconnect(/*串口关闭成功处理槽函数*/)));
+connect(obj, SIGNAL(sig_comOpened()), this, SLOT(slt_onConnected(/*串口打开成功处理槽函数*/)));
+connect(obj, SIGNAL(sig_comClosed()), this, SLOT(slt_onDisconnect(/*串口关闭成功处理槽函数*/)));
 connect(obj, SIGNAL(sig_received(QByteArray)), this, SLOT(/*数据接收槽函数*/));
 connect(obj, SIGNAL(sig_error(int)), this, SLOT(/*错误处理槽函数*/));
 //打开串口

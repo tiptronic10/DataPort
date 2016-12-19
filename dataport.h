@@ -10,7 +10,7 @@
 
 enum DataPort_Type{
 	NULL_PORT,
-	NETWORK_PORT,
+	TCP_PORT,
 	SERIAL_PORT
 };
 

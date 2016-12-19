@@ -20,7 +20,7 @@ obj->open("COM1", 115200);//Windows操作系统
 obj->write();
 //关闭串口
 obj->close();
-
+/////////////////////////////////////////////////////////////
 //网口使用示例
 DataPort* obj = new DataPort(DataPort::NETWORK_PORT);//实例化DataPort对象
 //连接信号槽，负责处理接收数据以及错误信息

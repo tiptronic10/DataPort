@@ -6,7 +6,7 @@ DataPort::DataPort(DataPort_Type type) : m_thread(nullptr), m_networkDataPort(nu
 	{
 	case DataPort_Type::NULL_PORT:
 		break;
-	case DataPort_Type::NETWORK_PORT:
+	case DataPort_Type::TCP_PORT:
 		m_thread = new QThread;
 		m_networkDataPort = new NetworkDataPort();
 		//向网口操作

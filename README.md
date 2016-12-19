@@ -22,7 +22,7 @@ obj->write();
 obj->close();
 /////////////////////////////////////////////////////////////
 //网口使用示例
-DataPort* obj = new DataPort(DataPort::NETWORK_PORT);//实例化DataPort对象
+DataPort* obj = new DataPort(DataPort::TCP_PORT);//实例化DataPort对象
 //连接信号槽，负责处理接收数据以及错误信息
 connect(obj, SIGNAL(sig_received(QByteArray)), this, SLOT(/*数据接收槽函数*/));
 connect(obj, SIGNAL(sig_error(QString)), this, SLOT(/*错误处理槽函数*/));

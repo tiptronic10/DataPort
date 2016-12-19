@@ -6,9 +6,12 @@ SerialDataPort::SerialDataPort(QObject *parent) : QObject(parent)
 
 void SerialDataPort::slt_onError(QSerialPort::SerialPortError value)
 {
-    QString ErrInfo;
-    ErrInfo = "SerialPortError  ErrorCode:" + QString::number(value);
-    emit sig_error(ErrInfo);
+	if(value != 0)
+	{
+		QString ErrInfo;
+		ErrInfo = "SerialPortError  ErrorCode:" + QString::number(value);
+		emit sig_error(ErrInfo);
+	}
 }
 
 void SerialDataPort::slt_init()

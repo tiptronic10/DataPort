@@ -14,8 +14,8 @@ connect(obj, SIGNAL(sig_error(QString)), this, SLOT(/*错误处理槽函数*/));
 connect(obj, SIGNAL(sig_opened()), this, SLOT(/*串口打开成功处理槽函数*/));
 connect(obj, SIGNAL(sig_closed()), this, SLOT(/*串口关闭成功处理槽函数*/));
 //打开串口
-obj->open("COM1", 115200);//Windows操作系统
-//obj->open("ttyUSB0", 115200);//Linux操作系统
+obj->open("COM1", 115200);//Windows
+//obj->open("ttyUSB0", 115200);//Linux上用的USB转串口
 //需要写数据时
 obj->write();
 //关闭串口
